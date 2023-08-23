@@ -1,0 +1,8 @@
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\bin\Debug\FP_Task_one.exe.config
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\bin\Debug\FP_Task_one.exe
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\bin\Debug\FP_Task_one.pdb
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\obj\Debug\FP_Task_one.csproj.AssemblyReference.cache
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\obj\Debug\FP_Task_one.csproj.SuggestedBindingRedirects.cache
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\obj\Debug\FP_Task_one.csproj.CoreCompileInputs.cache
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\obj\Debug\FP_Task_one.exe
+C:\Users\grigh\source\repos\FP_Task_one\FP_Task_one\obj\Debug\FP_Task_one.pdb
