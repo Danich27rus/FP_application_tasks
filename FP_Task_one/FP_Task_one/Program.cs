@@ -1,29 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FP_Task_one
 {
     internal class Program
     {
-
-        static private uint _floors;
-        static private uint _entrances;
-        static private uint _room;
-        static String[] flats = new String[] { "Ближняя слева", " Дальняя слева", "Дальняя справа", "Ближняя справа" };
+        static private int _floors;
+        static private int _entrances;
+        static private int _room;
 
         static void Main(string[] args)
         {
-            bool isValid = false;
-            bool isRoomExists = false;
+            var isValid = false;
 
             do
             {
                 Console.Write("Введите кол-во этажей: ");
-                isValid = UInt32.TryParse(Console.ReadLine(), out _floors);
+                isValid = Int32.TryParse(Console.ReadLine(), out _floors);
 
                 if (isValid && _floors > 0)
                 {
@@ -37,7 +29,7 @@ namespace FP_Task_one
             do
             {
                 Console.Write("Введите кол-во подъездов: ");
-                isValid = UInt32.TryParse(Console.ReadLine(), out _entrances);
+                isValid = Int32.TryParse(Console.ReadLine(), out _entrances);
 
                 if (isValid && _entrances > 0)
                 {
@@ -51,7 +43,7 @@ namespace FP_Task_one
             do
             {
                 Console.Write("Введите номер квартиры: ");
-                isValid = UInt32.TryParse(Console.ReadLine(), out _room);
+                isValid = Int32.TryParse(Console.ReadLine(), out _room);
 
                 if (isValid && _room > 0)
                 {
@@ -62,36 +54,29 @@ namespace FP_Task_one
 
             } while (!isValid);
 
-            isRoomExists = _room > _floors * _entrances * 4 ? false : true;
+            int apartmentsPerFloor = 4;
+            int floorsPerEntrance = _floors;
+            int apartmentsPerEntrance = floorsPerEntrance * apartmentsPerFloor;
+            int totalApartments = apartmentsPerEntrance * _entrances;
 
-            if (!isRoomExists)
+            if (_room < 1 || _room > totalApartments)
             {
-                Console.Write("Такой квартиры не существует в этом доме.");
-                Console.ReadKey();
+                Console.WriteLine("Квартиры с таким номером нет в доме.");
                 return;
             }
 
-            int room = (int)_room;
-            uint floor = 0, entrance = 0;
+            int entrance = (_room - 1) / apartmentsPerEntrance + 1;
+            int localApartmentNumber = (_room - 1) % apartmentsPerEntrance;
 
-            while (room > 0)
-            {
-                room -= (int)(4 * _entrances);
-                entrance++;
-            }
+            int floor = localApartmentNumber / apartmentsPerFloor + 1;
 
-            room = (int)_room;
+            string[] positions = { "ближняя слева (1)", "дальняя слева (2)", "дальняя справа (3)", "ближняя справа (4)" };
+            int positionIndex = localApartmentNumber % apartmentsPerFloor;
 
-            while (room > 0)
-            {
-                room -= 4;
-                floor++;
-            }
-
-            floor -= (entrance - 1) * _floors;
-
-            Console.WriteLine($"{flats[room + 3]} квартира находится в {entrance} подъезде, на {floor} этаже");
-            Console.ReadKey();
+            Console.WriteLine($"Квартира №{_room}:");
+            Console.WriteLine($"Подъезд: {entrance}");
+            Console.WriteLine($"Этаж: {floor}");
+            Console.WriteLine($"Расположение: {positions[positionIndex]}");
         }
     }
 }

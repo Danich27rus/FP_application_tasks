@@ -1,0 +1,20 @@
+<Window x:Class="UdpTrafficGeneratorWPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="UDP Генератор пакетов" Height="400" Width="600">
+    <Grid Margin="10">
+        <StackPanel>
+            <ComboBox ItemsSource="{Binding Interfaces}" SelectedItem="{Binding SelectedInterface}" DisplayMemberPath="Name" />
+            <TextBox Text="{Binding TargetIP}" Margin="0,5" />
+            <TextBox Text="{Binding TargetPort}" Margin="0,5" />
+            <TextBox Text="{Binding BitrateMbps}" Margin="0,5" />
+            <Button Content="Начать отправку" Command="{Binding StartSendCommand}" Margin="0,5"/>
+            <Button Content="Начать получение пакетов" Command="{Binding StartReceiveCommand}" Margin="0,5"/>
+            <TextBlock Text="{Binding SentPacketsText}" Margin="0,5"/>
+            <TextBlock Text="{Binding ReceivedPacketsText}" Margin="0,5"/>
+        </StackPanel>
+    </Grid>
+</Window>
